@@ -1,0 +1,33 @@
+<div class="sidebar sidebar-text">
+
+  <!-- show my name at the top -->
+  <div class="sidebar-top">
+    <div class="sidebar-title">
+      <a href="/">LISA&nbsp;<br>CHARLOTTE&nbsp;<br>ROST</a>
+    </div>
+  </div>
+
+
+  <!-- If the user is within a post, hide the menu when the user scrolls down. Otherwise, show it all the time.  -->
+
+  {% if page.layout == "post" %}
+  <div class="sidebar-index">
+
+  {% else %}
+  <div class="sidebar-index-hidden">
+  {% endif %}
+
+    <nav>
+      <ul>
+        <!-- Show the menu (tge structure is in the _data folder)  -->
+        {% for item in site.data.menupoints.docs %}
+          <li class="{% if item.url == page.url %}active{% endif %}">
+            <a href="{{ item.url }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+
+</div>

@@ -1,0 +1,34 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+
+# Permalinks
+permalink:        :title
+
+# Setup
+title:            Viva La DataViz
+tagline:          Portfolio & Blog
+description:      A joint project by Courtney and Sergio
+url:              http://vivaladataviz.github.io
+baseurl:
+
+author:
+  name:           "Courtney and Sergio"
+  url:            https://twitter.com/VivaLaDataviz
+  email:          vivaladataviz@gmail.com
+  twitter_user:   vivaladataviz
+
+paginate:         5
+
+# Plugins
+whitelist:        []
+plugins:          [jekyll-paginate]
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           vivaladataviz.github.io
+  sass:
+    sass_dir:     _sass
