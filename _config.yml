@@ -50,8 +50,8 @@ version: 2.1.0
 github:
   username: vivaladataviz
   repo: vivaladataviz.github.io
-sass:
-  sass_dir: /assets/_sass
+
+ sass_dir: /assets/_sass
 
 # Exclude metadata and development time dependencies (like Grunt plugins)
 exclude:
