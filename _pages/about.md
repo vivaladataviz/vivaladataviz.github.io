@@ -1,7 +1,7 @@
 ---
 layout: withoutdate
 title: About
-image: /pic/000000-about.png
+image: /images/000000-about2.png
 permalink: about
 categories: [article, talk]
 desc:

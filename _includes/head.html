@@ -1,49 +1,55 @@
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
+  <link href="http://gmpg.org/xfn/11" rel="profile" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
   <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1"
+  />
 
   <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
+    {% if page.title == "Home" %} {{ site.title }} &middot; {{ site.tagline }}
+    {% else %} {{ page.title }} &middot; {{ site.title }} {% endif %}
   </title>
 
-
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}assets/css/style.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="/pic/favicon.ico">
+  <link rel="shortcut icon" href="/assets/favicon//favicon.ico" />
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="RSS"
+    href="/atom.xml"
+  />
 
   <!-- Twitter cards -->
-  <meta name="twitter:site"    content="@vivaladataviz">
-  <meta name="twitter:creator" content="@vivaladataviz">
-  <meta name="twitter:title"   content="{{ page.title }}">
-  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:site" content="@vivaladataviz" />
+  <meta name="twitter:creator" content="@vivaladataviz" />
+  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   {% if page.summary %}
-  <meta name="twitter:description" content="{{ page.summary }}">
+  <meta name="twitter:description" content="{{ page.summary }}" />
   {% else %}
-  <meta name="twitter:description" content="A joint project by Courtney Lee and Sergio Sánchez.">
-  {% endif %}
-
-  {% if page.image %}
-  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+  <meta
+    name="twitter:description"
+    content="A joint project by Courtney Lee and Sergio Sánchez."
+  />
+  {% endif %} {% if page.image %}
+  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}" />
   {% else %}
-  <meta name="twitter:image" content="{{ site.url }}/pic/000000-featureimage.png">
+  <meta
+    name="twitter:image"
+    content="{{ site.url }}/assets/images/000000-featureimage.png"
+  />
   {% endif %}
   <!-- end of Twitter cards -->
 
-
-
+  {% seo %}
 </head>

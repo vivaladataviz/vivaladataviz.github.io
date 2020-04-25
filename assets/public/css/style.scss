@@ -45,8 +45,8 @@ $toneddown: 	    #808080;
 $background:      #F9F9F9;
 
 // imports
-@import "typo";
-@import "base";
-@import "code";
+@import "assets/_sass/typo";
+@import "assets/_sass/base";
+@import "assets/_sass/code";
 @import url('https://rsms.me/inter/inter.css'); //Inter
 @import url('https://use.typekit.net/nvb2ary.css'); //FF Tisa

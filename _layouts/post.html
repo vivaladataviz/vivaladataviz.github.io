@@ -45,13 +45,7 @@ layout: default
 <!-- show comments-->
 {% unless page.comments contains "disabled" %}
 
-<div id="commentsection">
-    <hr>
-    <h1>Comments</h1><br>
-
-    <div id="disqus_thread"></div>
-
-</div>
+{% include utterances.html %}
 
 {% endunless %}
 
@@ -95,7 +89,7 @@ layout: default
       <a class="thumb" href="{{ post.url }}">
       <div class="post">
         <div class="post-image">
-          <img src="{{ post.image }}"/>
+          <img src="assets/images/{{ post.image }}"/>
         </div>
         <div class="post-date">
 
