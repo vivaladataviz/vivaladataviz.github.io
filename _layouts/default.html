@@ -1,153 +1,145 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-
   {% include head.html %}
 
   <body>
-
     <div class="main">
-    {% include sidebar.html %}
-      {{ content }}
+      {% include sidebar.html %} {{ content }}
     </div>
 
- <!-- cookie warning + javascript scripts -->
- <!-- =================================== -->
+    <!-- cookie warning + javascript scripts -->
+    <!-- =================================== -->
 
-  <div id="cookie">
-
-    <div class="cookie-leftSide">
-      Hi! If you want to see the comments and let my Google Analytics (aka my sense of self-importance) know that you're visiting this site, let me save a cookie. Otherwise, don't allow it. No hard feelings. I promise. I'll save your choice for a year.
-    </div>
-
-    <div class="cookie-rightSide">
-      <div class="cookie-button">
-        <span id="accept" onclick="acceptCookie()">
-          Save a cookie for me.
-        </span>
+    <div id="cookie">
+      <div class="cookie-leftSide">
+        Hi! If you want to see the comments and let my Google Analytics (aka my
+        sense of self-importance) know that you're visiting this site, let me
+        save a cookie. Otherwise, don't allow it. No hard feelings. I promise.
+        I'll save your choice for a year.
       </div>
 
-      <div class="cookie-button">
-        <span id="decline" onclick="declineCookie()">
-          Please don't.
-        </span>
+      <div class="cookie-rightSide">
+        <div class="cookie-button">
+          <span id="accept" onclick="acceptCookie()">
+            Save a cookie for me.
+          </span>
+        </div>
+
+        <div class="cookie-button">
+          <span id="decline" onclick="declineCookie()">
+            Please don't.
+          </span>
+        </div>
       </div>
-
     </div>
-  </div>
 
+    <!-- Script: Check if cookie exists for this site -->
+    <script>
+      // taken from https://www.w3schools.com/js/js_cookies.asp
+      // scroll down to see the loaded scripts
 
-<!-- Script: Check if cookie exists for this site -->
-<script>
-
-  // taken from https://www.w3schools.com/js/js_cookies.asp
-  // scroll down to see the loaded scripts
-
-  function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
       }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
       }
-    }
-    return "";
-  }
 
-  function makeCookieWarningVisible() {
-    document.getElementById("cookie").classList.add("visible");
-  }
+      function makeCookieWarningVisible() {
+        document.getElementById("cookie").classList.add("visible");
+      }
 
-  function disqus() {
-    document.getElementById("commentsection").classList.add("visible-comments");
-    var disqus_shortname = 'vivaladataviz';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  }
+      function googleAnalytics() {
+        (function (i, s, o, g, r, a, m) {
+          i["GoogleAnalyticsObject"] = r;
+          (i[r] =
+            i[r] ||
+            function () {
+              (i[r].q = i[r].q || []).push(arguments);
+            }),
+            (i[r].l = 1 * new Date());
+          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m);
+        })(
+          window,
+          document,
+          "script",
+          "https://www.google-analytics.com/analytics.js",
+          "ga"
+        );
 
-  function googleAnalytics() {
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga("create", "UA-144974485-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
 
-    ga('create', 'UA-144974485-1', 'auto');
-    ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');
-  }
+      function initScripts() {
+        googleAnalytics();
+      }
 
-  function initScripts() {
-    disqus();
-    googleAnalytics();
-  }
+      function acceptCookie() {
+        setCookie("cookiesAccepted", "true", 14);
+        document.getElementById("cookie").classList.remove("visible");
+        initScripts();
+      }
 
-  function acceptCookie() {
-    setCookie("cookiesAccepted", "true", 14);
-    document.getElementById("cookie").classList.remove("visible");
-    initScripts();
-  }
+      function declineCookie() {
+        setCookie("cookiesAccepted", "false", 14);
+        document.getElementById("cookie").classList.remove("visible");
+      }
 
-  function declineCookie() {
-    setCookie("cookiesAccepted", "false", 14);
-    document.getElementById("cookie").classList.remove("visible");
-  }
+      // Script: Removes border-bottom link effect from images
+      function removeImageLinkEffect() {
+        // wait until the full content is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+          // find all links on the page
+          var links = document.getElementsByTagName("a");
 
+          // for all links...
+          for (i = 0; i < links.length; i++) {
+            // ...check if they have a child
+            if (links[i].firstElementChild) {
+              // ...check if the child is an img tag
+              if (links[i].firstElementChild.tagName == "IMG") {
+                // if so, add a css class called "imglink"
+                links[i].classList.add("imglink");
+              }
+            }
+          }
+        });
+      }
 
-  // Script: Removes border-bottom link effect from images
-  function removeImageLinkEffect() {
-    // wait until the full content is loaded
-  	document.addEventListener("DOMContentLoaded", function() {
+      function pageLoad() {
+        removeImageLinkEffect();
+        var cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted == "") {
+          makeCookieWarningVisible();
+        } else if (cookiesAccepted == "true") {
+          initScripts();
+        }
+      }
 
-  		// find all links on the page
-	  	var links = document.getElementsByTagName("a");
-
-			// for all links...
-  		for (i = 0; i < links.length; i++) {
-
-  			// ...check if they have a child
-  			if (links[i].firstElementChild) {
-
-					// ...check if the child is an img tag
-					if (links[i].firstElementChild.tagName == 'IMG') {
-
-						// if so, add a css class called "imglink"
-						links[i].classList.add("imglink");
-
-					}
-				}
-			}
-  	});
-  }
-
-  function pageLoad() {
-    removeImageLinkEffect();
-    var cookiesAccepted = getCookie("cookiesAccepted");
-    if (cookiesAccepted == "") {
-      makeCookieWarningVisible();
-    } else if (cookiesAccepted == "true") {
-      initScripts();
-    }
-  }
-
-  // the one function to rule them all!!!11
-  // the only function that we actually call on pageload
-  pageLoad();
-
-</script>
-
-</body>
+      // the one function to rule them all!!!11
+      // the only function that we actually call on pageload
+      pageLoad();
+    </script>
+  </body>
 </html>

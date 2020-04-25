@@ -1,30 +1,27 @@
 ---
 layout: default
-title: Talks
-description: Slides and transcripts of my best talks.
 ---
-
 <div class="completeright">
 
     <!-- display the name of the category -->
     <div class="category-header">
       <hr>
-      <h2>Talks</h2>
+      <h2>{{page.title}}</h2>
 
-      <!-- Go back the main page to see a collection of my best talks</a> -->
+      <!-- Go back the main page to see a collection of my best {{page.category}}s</a> -->
       <div class="sidebar-text">
-        &rarr; <a href="/index.html#talks">GO TO THE MAIN PAGE TO SEE ONLY ✦ SELECTED TALKS</a>
+        &rarr; <a href="/index.html#{{page.category}}s">GO TO THE MAIN PAGE TO SEE ONLY ✦ SELECTED {{page.category | upcase}}S</a>
       </div>
 
       <!-- put a little intro text below the category title -->
       <div class="blogcontainer article-text">
-        <p>Slides, code, and transcripts of some talks that we have given.</p>
+        <p>{{page.desc}}</p>
     <br></div>
 
 
   <div class="grid">
-
-    {% for post in site.categories.talk %}
+    {% assign category = page.category %}
+    {% for post in site.categories.[category] %}
 
     <!-- don't display about and impressum page -->
     {% unless post.layout == 'withoutdate' %}
@@ -48,7 +45,7 @@ description: Slides and transcripts of my best talks.
             ✦
           {% endif %}
 
-          <!-- display month & year when blog post or talk. Only display year for design work -->
+          <!-- display month & year when blog post or {{page.category}}. Only display year for design work -->
           {% if category contains "design" %}
              {{ post.date | date: "%Y" }}
           {% else %}
@@ -73,15 +70,10 @@ description: Slides and transcripts of my best talks.
     {% endfor %}
 
   </div>
-
   <div class="blogcontainer article-text">
 
-    <h2>Recordings</h2>
-    <p>
-      Place holder.
-    </p>
-
-  </div>
+{{ content }}
+</div>
 
 
 </div>

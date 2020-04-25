@@ -1,34 +1,65 @@
 # Dependencies
-markdown:         kramdown
-highlighter:      rouge
+markdown: kramdown
+highlighter: rouge
 
-
-# Permalinks
-permalink:        :title
+include: ["_pages"]
+permalink: /:title/
+future: true
 
 # Setup
-title:            viva la dataviz
-tagline:          Portfolio & Blog
-description:      A joint project by Courtney and Sergio
-url:              http://vivaladataviz.github.io
-baseurl:
+title: "viva la dataviz"
+tagline: "Portfolio & Blog"
+description: "A joint project by Courtney and Sergio"
+url: "https://vivaladataviz.com"
+baseurl: "/"
+logo: "assets/favicon/favicon-32x32.png"
 
 author:
-  name:           "Courtney and Sergio"
-  url:            https://twitter.com/VivaLaDataviz
-  email:          vivaladataviz@gmail.com
-  twitter_user:   vivaladataviz
+  name: "Courtney and Sergio"
+  url: https://twitter.com/VivaLaDataviz
+  email: vivaladataviz@gmail.com
+  twitter_user: vivaladataviz
 
-paginate:         5
+paginate: 5
 
 # Plugins
-whitelist:        []
-plugins:          [jekyll-paginate]
+whitelist: []
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+
+# Defaults
+defaults:
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
 
 # Custom vars
-version:          2.1.0
+version: 2.1.0
 
 github:
-  repo:           vivaladataviz.github.io
+  username: vivaladataviz
+  repo: vivaladataviz.github.io
   sass:
-    sass_dir:     _sass
+    sass_dir: /assets/_sass
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude:
+  [
+    README.md,
+    package.json,
+    grunt.js,
+    Gruntfile.js,
+    Gruntfile.coffee,
+    node_modules,
+  ]

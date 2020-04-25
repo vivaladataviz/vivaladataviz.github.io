@@ -1,5 +1,6 @@
 # other stuffs
 .vscode/
+.jekyll-cache
 
 # Ignore docs files
 _gh_pages
